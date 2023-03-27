@@ -1,0 +1,20 @@
+//
+// Rotina para a leitura do arquivo WHO-COVID-19-global-data.csv.
+//
+Set stream=##class(%Stream.FileCharacter).%New() 
+Set sc=stream.LinkToFile("c:\temp\WHO-COVID-19-global-data.csv") 
+Do stream.Rewind() 
+While 'stream.AtEnd 
+{
+	Set lin=stream.ReadLine() 
+	Set houveObito="N"
+	If $Piece(lin,",",2)="BR" // Trata apenas os registros do Brasil (BR)
+	{
+		If $Piece(lin,",",7)>0 // Ocorreu algum novo óbito na Data
+		{
+		 	Set houveObito="S"
+		}
+		Set ^covid($Piece(lin,",",1))=lin_","_houveObito 
+	}
+} 
+Quit

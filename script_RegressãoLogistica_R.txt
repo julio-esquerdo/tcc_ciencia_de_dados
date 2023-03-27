@@ -1,0 +1,6 @@
+dados <- read.csv("c:\\temp\\casos_Brazil_3.txt")
+dados$Houve_mortes <- factor(dados$Houve_mortes)
+modelo <- glm(Houve_mortes ~ Percentual_vacinado, data = dados, family = binomial)
+summary(modelo)
+
+

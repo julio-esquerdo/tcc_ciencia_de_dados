@@ -1,0 +1,11 @@
+df <- read.csv("c:\\temp\\casos_Brazil_3.txt")
+model <- lm(New_deaths ~ Percentual_vacinado, data=df)
+summary(model)
+plot(df$Percentual_vacinado, df$New_deaths)
+abline(model)
+
+
+
+
+
+

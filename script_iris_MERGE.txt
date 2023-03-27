@@ -1,0 +1,19 @@
+//
+// Rotina para leitura dos dados da Fiocruz e merge com dados da OMS
+//
+Set stream=##class(%Stream.FileCharacter).%New() 
+Set sc=stream.LinkToFile("c:\temp\vacinados_percentual_fiocruz.csv")
+Do stream.Rewind()
+While 'stream.AtEnd 
+{
+  	Set lin=stream.ReadLine()
+	Set data=$Piece(lin,",",1)
+	Set percentual=$Piece(lin,",",2)
+	Set reg=$Get(^covid(data)) // Procura o registro da data da Fiocruz nos dados da OMS pela data
+	If reg'="" // Encontrou a data 
+	{
+		Set ^covid(data)=reg_","_percentual
+	}  	
+}	
+Quit
+

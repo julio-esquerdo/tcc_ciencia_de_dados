@@ -1,0 +1,20 @@
+//
+// Gera o arquivo com os dados para Analise
+//
+Set arq="c:\temp\casos_Brazil_3.txt"
+Open arq:"WN"
+Use arq Write "Date_reported,Country_code,Country,WHO_region,New_cases,Cumulative_cases,New_deaths,Cumulative_deaths,Houve_mortes,Percentual_vacinado"
+Set data=""
+Do
+{
+	Set data=$Order(^covid(data))
+	If data'=""
+	{
+		Use arq Write !,^covid(data)
+	}
+} While data'=""
+Close arq
+Quit
+
+
+

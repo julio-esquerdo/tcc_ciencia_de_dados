@@ -1,0 +1,12 @@
+import pandas as pd
+import statsmodels.api as sm
+df = pd.read_csv('c:\\temp\\casos_Brazil_3.txt')
+df['Houve_mortes'] = df['Houve_mortes'].map({'S': 1, 'N': 0})
+X = df[['Percentual_vacinado']]
+X = sm.add_constant(X)
+y = df['Houve_mortes']
+model = sm.Logit(y, X).fit()
+print(model.summary())
+
+
+

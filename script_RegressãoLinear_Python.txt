@@ -1,0 +1,21 @@
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+df = pd.read_csv('c:\\temp\casos_Brazil_3.txt')
+X = df['Percentual_vacinado'].values.reshape(-1,1)
+y = df['New_deaths'].values
+model = LinearRegression().fit(X, y)
+print("Intercepto: ", model.intercept_)
+print("Inclinação: ", model.coef_[0])
+
+import matplotlib.pyplot as plt
+plt.scatter(X, y)
+plt.plot(X, model.predict(X), color='red')
+plt.show
+
+
+
+
+
+
+
+

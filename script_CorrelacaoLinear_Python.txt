@@ -1,0 +1,14 @@
+import pandas as pd
+dados = pd.read_csv("c:\\temp\\casos_Brazil_3.txt")
+correlacao = dados['New_deaths'].corr(dados['Percentual_vacinado'])
+print("Correlação Linear: ",correlacao)
+
+
+
+
+
+
+
+
+
+

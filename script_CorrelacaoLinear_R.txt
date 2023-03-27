@@ -1,0 +1,12 @@
+dados <- read.csv("c:\\temp\\casos_Brazil_3.txt")
+correlacao <- cor(dados$New_deaths, dados$Percentual_vacinado, method = "pearson")
+cat("Correlação linear:", correlacao)
+
+
+
+
+
+
+
+
+
